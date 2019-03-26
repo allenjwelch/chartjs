@@ -1,7 +1,18 @@
-const ctx = document.getElementById("lineChart");
+const ctxLine = document.getElementById("lineChart");
+const ctxBar = document.getElementById("barChart");
+const ctxRadar = document.getElementById("radarChart");
+const ctxDoughnut = document.getElementById("doughnutChart");
 console.log(Date.now())
 
-let lineChart = new Chart(ctx, {
+// Chart.defaults.global.responsive = false;
+// Chart.defaults.global.hover.mode = "nearest";
+Chart.defaults.global.animation.onComplete = () => {
+	console.log('finished')
+}
+
+Chart.defaults.global.animation.duration = 3000;
+
+let lineChart = new Chart(ctxLine, {
     type: 'line',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -58,3 +69,55 @@ let lineChart = new Chart(ctx, {
         }
     },
 })
+
+let barChart = new Chart(ctxBar, {
+	type: "bar",
+	data: {
+		labels: ["this", "that", "the other"],
+		datasets: [{
+				label: "These things...",
+				data: [12, 19, 3],
+				backgroundColor: [
+					'rgba(0, 150, 0, .5)',
+					'rgba(150, 0, 0, .5)',
+					'rgba(0, 0, 100, .5)',
+				],
+				borderColor: [
+					'rgba(0, 0, 0, 1)',
+				],
+		}]
+	}
+});
+
+let radarChart = new Chart(ctxRadar, {
+	type: "radar",
+	data: {
+		labels: ["this", "that", "the other", "more stuff", "other stuff"],
+		datasets: [
+			{
+				label: "These things...",
+				data: [12, 19, 3, 14, 7],
+				backgroundColor: ['rgba(0, 150, 0, .5)'],
+			},
+			{
+				label: "These other things...",
+				data: [4, 9, 13, 4, 17],
+				backgroundColor: ['rgba(150, 0, 0, .5)'],
+			}
+		]
+	}
+});
+
+let doughnutChart = new Chart(ctxDoughnut, {
+	type: "doughnut",
+	data: {
+		labels: ["this", "that", "the other", "more stuff", "other stuff"],
+		datasets: [
+			{
+				label: "These things...",
+				data: [12, 19, 3, 14, 7],
+				backgroundColor: ['rgba(0, 150, 0, .5)'],
+			},
+		]
+	}
+});

@@ -1,3 +1,18 @@
+.chart-container {
+	width: 90%;
+	/* text-align: center; */
+	margin: 0 auto;
+}
+
+canvas {
+	margin: 20px auto;
+}
+
 #lineChart {
     border: 1px solid #333;
+}
+
+#barChart {
+    border: 1px solid #333;
+
 }
